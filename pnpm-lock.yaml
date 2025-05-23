@@ -17,6 +17,9 @@ importers:
       '@firebase/firestore':
         specifier: ^4.7.14
         version: 4.7.14(@firebase/app@0.12.3)
+      dotenv:
+        specifier: ^16.5.0
+        version: 16.5.0
       faker:
         specifier: ^6.6.6
         version: 6.6.6
@@ -289,6 +292,10 @@ packages:
   delayed-stream@1.0.0:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
+
+  dotenv@16.5.0:
+    resolution: {integrity: sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg==}
+    engines: {node: '>=12'}
 
   drange@1.1.1:
     resolution: {integrity: sha512-pYxfDYpued//QpnLIm4Avk7rsNtAtQkUES2cwAYSvD/wd2pKD71gN2Ebj3e7klzXwjocvE8c5vx/1fxwpqmSxA==}
@@ -1010,6 +1017,8 @@ snapshots:
 
   delayed-stream@1.0.0:
     optional: true
+
+  dotenv@16.5.0: {}
 
   drange@1.1.1: {}
 

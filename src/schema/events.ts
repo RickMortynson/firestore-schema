@@ -4,13 +4,13 @@ import { Timestamp, GeoPoint } from "@firebase/firestore";
 
 export const eventSchema: z.ZodType = z.object({
   title: z.string(),
-  activity: z.string().describe('TODO: must be a enum'), 
+  activity: z.string().describe('TODO: must be a enum'),
   description: z.string().optional(),
   announcements: z.array(z.string()).optional(),
   capacity: z.number().optional(),
   creator: baseUserSchema,
-  deadline: z.union([z.instanceof(Timestamp), z.instanceof(Date)]).describe('fundraising deadline. if that date is reached and the goal is not met, the fundraising will be cancelled'),
-  endDate: z.union([z.instanceof(Timestamp), z.instanceof(Date)]),
+  deadline: z.instanceof(Timestamp).describe('fundraising deadline. if that date is reached and the goal is not met, the fundraising will be cancelled'),
+  endDate: z.instanceof(Timestamp),
   fundraising: z.object({
     accumulated: z.number(),
     goal: z.number(),
@@ -26,7 +26,7 @@ export const eventSchema: z.ZodType = z.object({
     isPublic: z.boolean(),
     shareableUsers: z.array(z.string()).optional(),
   }),
-  startDate: z.union([z.instanceof(Timestamp), z.instanceof(Date)]),
+  startDate: z.instanceof(Timestamp),
   usersChecked: z.number().describe('for ticketing experiences').optional(),
   viewCount: z.number(),
 })

@@ -1,18 +1,16 @@
 import { z } from "zod";
-import { Timestamp } from "@firebase/firestore";
+import {Timestamp} from "@firebase/firestore";
 
 const permissionSchema = z.object({
     granted: z.boolean(),
     toggledInApp: z.boolean(),
-  }); 
+  });
+
 export const baseUserSchema = z.object({
   fullName: z.string(),
   username: z.string(),
   avatarURL: z.string().url(),
-  createdAt: z.union([
-    z.instanceof(Timestamp).default(() => Timestamp.now()),
-    z.instanceof(Date).default(() => new Date()),
-  ]),
+  createdAt: z.instanceof(Timestamp),
   dateOfBirth: z.string().datetime(),
   formatPreference: z.string().describe('In-person, Online, Hybrid'),
   genderIdentity: z.string(),
