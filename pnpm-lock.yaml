@@ -20,9 +20,6 @@ importers:
       dotenv:
         specifier: ^16.5.0
         version: 16.5.0
-      faker:
-        specifier: ^6.6.6
-        version: 6.6.6
       firebase-admin:
         specifier: ^13.4.0
         version: 13.4.0
@@ -343,9 +340,6 @@ packages:
 
   extend@3.0.2:
     resolution: {integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==}
-
-  faker@6.6.6:
-    resolution: {integrity: sha512-9tCqYEDHI5RYFQigXFwF1hnCwcWCOJl/hmll0lr5D2Ljjb0o4wphb69wikeJDz5qCEzXCoPvG6ss5SDP6IfOdg==}
 
   farmhash-modern@1.1.0:
     resolution: {integrity: sha512-6ypT4XfgqJk/F3Yuv4SX26I3doUjt0GTG4a+JgWxXQpxXzTBq8fPUeGHfcYMMDPHJHm3yPOSjaeBwBGAHWXCdA==}
@@ -1073,8 +1067,6 @@ snapshots:
     optional: true
 
   extend@3.0.2: {}
-
-  faker@6.6.6: {}
 
   farmhash-modern@1.1.0: {}
 
