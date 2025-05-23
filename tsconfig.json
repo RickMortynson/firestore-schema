@@ -15,7 +15,7 @@
     "noUnusedParameters": true,
     "useUnknownInCatchVariables": false,
     "incremental": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "rootDir": "./src"
   },
   "include": ["src/**/*"],
