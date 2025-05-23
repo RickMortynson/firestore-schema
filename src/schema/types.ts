@@ -15,6 +15,7 @@ export const baseUserSchema = z.object({
   formatPreference: z.string().describe('In-person, Online, Hybrid'),
   genderIdentity: z.string(),
   phoneNumber: z.string().regex(/^\+1\d{10}$/),
+  stripeCustomerId: z.string().optional(),
   settings: z.object({
     allowInvitesFromStrangers: z.boolean(),
   }),

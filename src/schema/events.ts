@@ -14,7 +14,8 @@ export const eventSchema: z.ZodType = z.object({
   fundraising: z.object({
     accumulated: z.number(),
     goal: z.number(),
-  }).optional(),
+  }).optional().describe("exclusively for fundraising experience"),
+  ticketPrice: z.number().optional().describe("exclusively for ticketed experience"),
   imageUri: z.string(),
   link: z.string().optional(),
   location: z.object({
