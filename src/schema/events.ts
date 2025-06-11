@@ -2,7 +2,7 @@ import { z } from "zod";
 import { baseUserSchema } from "./types.js";
 import { Timestamp, GeoPoint } from "@firebase/firestore";
 
-export const eventSchema: z.ZodType = z.object({
+export const eventSchema = z.object({
   title: z.string(),
   shortId: z.string(),
   activity: z.string().describe("TODO: must be a enum"),
