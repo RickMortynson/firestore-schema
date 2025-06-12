@@ -25,7 +25,11 @@ export const eventSchema = z.object({
     description: z.string().optional(),
     announcements: z.array(z.string()).optional(),
     capacity: z.number().optional(),
-    creator: baseUserSchema,
+    creator: z.object({
+        uid: z.string(),
+        name: z.string(),
+        avatar: z.string(),
+    }),
     deadline: z
         .instanceof(Timestamp)
         .describe("fundraising deadline. if that date is reached and the goal is not met, the fundraising will be cancelled"),

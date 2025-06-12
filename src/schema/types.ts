@@ -19,6 +19,7 @@ export const baseUserSchema = z.object({
   settings: z.object({
     allowInvitesFromStrangers: z.boolean(),
   }),
+  fcmToken: z.string().optional(),
   permissions: z.object({
     cameraAccess: permissionSchema,
     contactAccess: permissionSchema,
@@ -30,5 +31,5 @@ export const baseUserSchema = z.object({
       accessType: z.enum(['limited', 'full', 'denied']),
     }),
   }),
-  prefferedActivities: z.array(z.string()),
+  preferredActivities: z.array(z.string()),
 });

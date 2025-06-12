@@ -20,6 +20,7 @@ export declare const eventAgentsSchema: z.ZodObject<{
         }, {
             allowInvitesFromStrangers: boolean;
         }>;
+        fcmToken: z.ZodOptional<z.ZodString>;
         permissions: z.ZodObject<{
             cameraAccess: z.ZodObject<{
                 granted: z.ZodBoolean;
@@ -156,7 +157,7 @@ export declare const eventAgentsSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         }>;
-        prefferedActivities: z.ZodArray<z.ZodString, "many">;
+        preferredActivities: z.ZodArray<z.ZodString, "many">;
     }, "strip", z.ZodTypeAny, {
         fullName: string;
         username: string;
@@ -200,8 +201,9 @@ export declare const eventAgentsSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     }, {
         fullName: string;
         username: string;
@@ -245,12 +247,13 @@ export declare const eventAgentsSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     }>;
 }, "strip", z.ZodTypeAny, {
-    role: "collaborator" | "scanner";
     status: "pending" | "accepted" | "rejected";
+    role: "collaborator" | "scanner";
     user: {
         fullName: string;
         username: string;
@@ -294,12 +297,13 @@ export declare const eventAgentsSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     };
 }, {
-    role: "collaborator" | "scanner";
     status: "pending" | "accepted" | "rejected";
+    role: "collaborator" | "scanner";
     user: {
         fullName: string;
         username: string;
@@ -343,8 +347,9 @@ export declare const eventAgentsSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     };
 }>;
 export declare const eventJoinersSchema: z.ZodObject<{
@@ -367,6 +372,7 @@ export declare const eventJoinersSchema: z.ZodObject<{
         }, {
             allowInvitesFromStrangers: boolean;
         }>;
+        fcmToken: z.ZodOptional<z.ZodString>;
         permissions: z.ZodObject<{
             cameraAccess: z.ZodObject<{
                 granted: z.ZodBoolean;
@@ -503,7 +509,7 @@ export declare const eventJoinersSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         }>;
-        prefferedActivities: z.ZodArray<z.ZodString, "many">;
+        preferredActivities: z.ZodArray<z.ZodString, "many">;
     }, "strip", z.ZodTypeAny, {
         fullName: string;
         username: string;
@@ -547,8 +553,9 @@ export declare const eventJoinersSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     }, {
         fullName: string;
         username: string;
@@ -592,8 +599,9 @@ export declare const eventJoinersSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     }>>;
     inviteCode: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
@@ -642,8 +650,9 @@ export declare const eventJoinersSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     } | undefined;
     inviteCode?: string | undefined;
 }, {
@@ -692,8 +701,9 @@ export declare const eventJoinersSchema: z.ZodObject<{
                 accessType: "limited" | "full" | "denied";
             };
         };
-        prefferedActivities: string[];
+        preferredActivities: string[];
         stripeCustomerId?: string | undefined;
+        fcmToken?: string | undefined;
     } | undefined;
     inviteCode?: string | undefined;
 }>;
@@ -705,249 +715,17 @@ export declare const eventSchema: z.ZodObject<{
     announcements: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     capacity: z.ZodOptional<z.ZodNumber>;
     creator: z.ZodObject<{
-        fullName: z.ZodString;
-        username: z.ZodString;
-        avatarURL: z.ZodString;
-        createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
-        dateOfBirth: z.ZodString;
-        formatPreference: z.ZodString;
-        genderIdentity: z.ZodString;
-        phoneNumber: z.ZodString;
-        stripeCustomerId: z.ZodOptional<z.ZodString>;
-        settings: z.ZodObject<{
-            allowInvitesFromStrangers: z.ZodBoolean;
-        }, "strip", z.ZodTypeAny, {
-            allowInvitesFromStrangers: boolean;
-        }, {
-            allowInvitesFromStrangers: boolean;
-        }>;
-        permissions: z.ZodObject<{
-            cameraAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            contactAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            calendarAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            locationAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            motionFitnessAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            pushNotifications: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            cameraRollAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            } & {
-                accessType: z.ZodEnum<["limited", "full", "denied"]>;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            }>;
-        }, "strip", z.ZodTypeAny, {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        }, {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        }>;
-        prefferedActivities: z.ZodArray<z.ZodString, "many">;
+        uid: z.ZodString;
+        name: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        fullName: string;
-        username: string;
-        avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        prefferedActivities: string[];
-        stripeCustomerId?: string | undefined;
+        uid: string;
+        name: string;
+        avatar: string;
     }, {
-        fullName: string;
-        username: string;
-        avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        prefferedActivities: string[];
-        stripeCustomerId?: string | undefined;
+        uid: string;
+        name: string;
+        avatar: string;
     }>;
     deadline: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     endDate: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
@@ -968,11 +746,11 @@ export declare const eventSchema: z.ZodObject<{
         location: z.ZodType<GeoPoint, z.ZodTypeDef, GeoPoint>;
         name: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        location: GeoPoint;
         name: string;
+        location: GeoPoint;
     }, {
-        location: GeoPoint;
         name: string;
+        location: GeoPoint;
     }>;
     photos: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
     shareable: z.ZodObject<{
@@ -1008,6 +786,7 @@ export declare const eventSchema: z.ZodObject<{
             }, {
                 allowInvitesFromStrangers: boolean;
             }>;
+            fcmToken: z.ZodOptional<z.ZodString>;
             permissions: z.ZodObject<{
                 cameraAccess: z.ZodObject<{
                     granted: z.ZodBoolean;
@@ -1144,7 +923,7 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             }>;
-            prefferedActivities: z.ZodArray<z.ZodString, "many">;
+            preferredActivities: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
             fullName: string;
             username: string;
@@ -1188,8 +967,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         }, {
             fullName: string;
             username: string;
@@ -1233,8 +1013,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         }>>;
         inviteCode: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
@@ -1283,8 +1064,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         } | undefined;
         inviteCode?: string | undefined;
     }, {
@@ -1333,8 +1115,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         } | undefined;
         inviteCode?: string | undefined;
     }>, "many">;
@@ -1358,6 +1141,7 @@ export declare const eventSchema: z.ZodObject<{
             }, {
                 allowInvitesFromStrangers: boolean;
             }>;
+            fcmToken: z.ZodOptional<z.ZodString>;
             permissions: z.ZodObject<{
                 cameraAccess: z.ZodObject<{
                     granted: z.ZodBoolean;
@@ -1494,7 +1278,7 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             }>;
-            prefferedActivities: z.ZodArray<z.ZodString, "many">;
+            preferredActivities: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
             fullName: string;
             username: string;
@@ -1538,8 +1322,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         }, {
             fullName: string;
             username: string;
@@ -1583,12 +1368,13 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         }>;
     }, "strip", z.ZodTypeAny, {
-        role: "collaborator" | "scanner";
         status: "pending" | "accepted" | "rejected";
+        role: "collaborator" | "scanner";
         user: {
             fullName: string;
             username: string;
@@ -1632,12 +1418,13 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         };
     }, {
-        role: "collaborator" | "scanner";
         status: "pending" | "accepted" | "rejected";
+        role: "collaborator" | "scanner";
         user: {
             fullName: string;
             username: string;
@@ -1681,8 +1468,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         };
     }>, "many">;
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
@@ -1692,57 +1480,16 @@ export declare const eventSchema: z.ZodObject<{
     shortId: string;
     activity: string;
     creator: {
-        fullName: string;
-        username: string;
-        avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        prefferedActivities: string[];
-        stripeCustomerId?: string | undefined;
+        uid: string;
+        name: string;
+        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
     imageUri: string;
     location: {
-        location: GeoPoint;
         name: string;
+        location: GeoPoint;
     };
     shareable: {
         isPublic: boolean;
@@ -1796,14 +1543,15 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         } | undefined;
         inviteCode?: string | undefined;
     }[];
     eventAgents: {
-        role: "collaborator" | "scanner";
         status: "pending" | "accepted" | "rejected";
+        role: "collaborator" | "scanner";
         user: {
             fullName: string;
             username: string;
@@ -1847,8 +1595,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         };
     }[];
     description?: string | undefined;
@@ -1868,57 +1617,16 @@ export declare const eventSchema: z.ZodObject<{
     shortId: string;
     activity: string;
     creator: {
-        fullName: string;
-        username: string;
-        avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        prefferedActivities: string[];
-        stripeCustomerId?: string | undefined;
+        uid: string;
+        name: string;
+        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
     imageUri: string;
     location: {
-        location: GeoPoint;
         name: string;
+        location: GeoPoint;
     };
     shareable: {
         isPublic: boolean;
@@ -1972,14 +1680,15 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         } | undefined;
         inviteCode?: string | undefined;
     }[];
     eventAgents: {
-        role: "collaborator" | "scanner";
         status: "pending" | "accepted" | "rejected";
+        role: "collaborator" | "scanner";
         user: {
             fullName: string;
             username: string;
@@ -2023,8 +1732,9 @@ export declare const eventSchema: z.ZodObject<{
                     accessType: "limited" | "full" | "denied";
                 };
             };
-            prefferedActivities: string[];
+            preferredActivities: string[];
             stripeCustomerId?: string | undefined;
+            fcmToken?: string | undefined;
         };
     }[];
     description?: string | undefined;

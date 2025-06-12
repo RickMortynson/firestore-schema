@@ -6,8 +6,8 @@ export declare const userFriendsSchema: z.ZodObject<{
     status: z.ZodEnum<["sent", "accepted", "rejected", "pending"]>;
     createdAt: z.ZodUnion<[z.ZodDefault<z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>>, z.ZodDefault<z.ZodType<Date, z.ZodTypeDef, Date>>]>;
 }, "strip", z.ZodTypeAny, {
-    status: "pending" | "accepted" | "rejected" | "sent";
     createdAt: Date | Timestamp;
+    status: "pending" | "accepted" | "rejected" | "sent";
     friend?: any;
 }, {
     status: "pending" | "accepted" | "rejected" | "sent";

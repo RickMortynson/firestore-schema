@@ -21,12 +21,12 @@ export declare const groupMessagesSchema: z.ZodObject<{
     sender: z.ZodType<any, z.ZodTypeDef, any>;
     createdAt: z.ZodUnion<[z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>, z.ZodType<Date, z.ZodTypeDef, Date>]>;
 }, "strip", z.ZodTypeAny, {
-    message: string;
     createdAt: Date | Timestamp;
+    message: string;
     sender?: any;
 }, {
-    message: string;
     createdAt: Date | Timestamp;
+    message: string;
     sender?: any;
 }>;
 export type GroupType = z.infer<typeof groupSchema>;

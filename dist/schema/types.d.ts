@@ -17,6 +17,7 @@ export declare const baseUserSchema: z.ZodObject<{
     }, {
         allowInvitesFromStrangers: boolean;
     }>;
+    fcmToken: z.ZodOptional<z.ZodString>;
     permissions: z.ZodObject<{
         cameraAccess: z.ZodObject<{
             granted: z.ZodBoolean;
@@ -153,7 +154,7 @@ export declare const baseUserSchema: z.ZodObject<{
             accessType: "limited" | "full" | "denied";
         };
     }>;
-    prefferedActivities: z.ZodArray<z.ZodString, "many">;
+    preferredActivities: z.ZodArray<z.ZodString, "many">;
 }, "strip", z.ZodTypeAny, {
     fullName: string;
     username: string;
@@ -197,8 +198,9 @@ export declare const baseUserSchema: z.ZodObject<{
             accessType: "limited" | "full" | "denied";
         };
     };
-    prefferedActivities: string[];
+    preferredActivities: string[];
     stripeCustomerId?: string | undefined;
+    fcmToken?: string | undefined;
 }, {
     fullName: string;
     username: string;
@@ -242,6 +244,7 @@ export declare const baseUserSchema: z.ZodObject<{
             accessType: "limited" | "full" | "denied";
         };
     };
-    prefferedActivities: string[];
+    preferredActivities: string[];
     stripeCustomerId?: string | undefined;
+    fcmToken?: string | undefined;
 }>;
