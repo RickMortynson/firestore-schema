@@ -988,7 +988,7 @@ export declare const eventSchema: z.ZodObject<{
     startDate: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     usersChecked: z.ZodOptional<z.ZodNumber>;
     viewCount: z.ZodNumber;
-    joinedUsers: z.ZodArray<z.ZodObject<{
+    eventJoiners: z.ZodArray<z.ZodObject<{
         phoneNumber: z.ZodOptional<z.ZodString>;
         status: z.ZodEnum<["going", "rejected", "invited"]>;
         user: z.ZodOptional<z.ZodObject<{
@@ -1750,7 +1750,7 @@ export declare const eventSchema: z.ZodObject<{
     };
     startDate: Timestamp;
     viewCount: number;
-    joinedUsers: {
+    eventJoiners: {
         status: "rejected" | "going" | "invited";
         phoneNumber?: string | undefined;
         user?: {
@@ -1926,7 +1926,7 @@ export declare const eventSchema: z.ZodObject<{
     };
     startDate: Timestamp;
     viewCount: number;
-    joinedUsers: {
+    eventJoiners: {
         status: "rejected" | "going" | "invited";
         phoneNumber?: string | undefined;
         user?: {
