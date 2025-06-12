@@ -2,6 +2,25 @@ import { z } from "zod";
 import { baseUserSchema } from "./types.js";
 import { Timestamp, GeoPoint } from "@firebase/firestore";
 
+export const eventAgentsSchema = z.object({
+  role: z.enum(["collaborator", "scanner"]),
+  status: z.enum(["pending", "accepted", "rejected"]),
+  user: baseUserSchema,
+});
+
+export const eventJoinersSchema = z.object({
+  phoneNumber: z
+      .string()
+      .optional()
+      .describe("for users without the application"),
+  status: z.enum(["going", "rejected", "invited"]),
+  user: baseUserSchema.optional(),
+  inviteCode: z
+      .string()
+      .optional()
+      .describe("Unique RSVP invite code to distinguish users"),
+});
+
 export const eventSchema = z.object({
   title: z.string(),
   shortId: z.string(),
@@ -41,26 +60,9 @@ export const eventSchema = z.object({
   startDate: z.instanceof(Timestamp),
   usersChecked: z.number().describe("for ticketing experiences").optional(),
   viewCount: z.number(),
+  eventJoiners: z.array(eventJoinersSchema),
+  eventAgents: z.array(eventAgentsSchema),
   createdAt: z.instanceof(Timestamp)
-});
-
-export const eventAgentsSchema = z.object({
-  role: z.enum(["collaborator", "scanner"]),
-  status: z.enum(["pending", "accepted", "rejected"]),
-  user: baseUserSchema,
-});
-
-export const eventJoinersSchema = z.object({
-  phoneNumber: z
-    .string()
-    .optional()
-    .describe("for users without the application"),
-  status: z.enum(["going", "rejected", "invited"]),
-  user: baseUserSchema.optional(),
-  inviteCode: z
-    .string()
-    .optional()
-    .describe("Unique RSVP invite code to distinguish users"),
 });
 
 export type EventType = z.infer<typeof eventSchema>;
