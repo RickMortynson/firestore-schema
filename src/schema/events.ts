@@ -57,6 +57,10 @@ export const eventJoinersSchema = z.object({
     .describe("for users without the application"),
   status: z.enum(["going", "rejected", "invited"]),
   user: baseUserSchema.optional(),
+  inviteCode: z
+    .string()
+    .optional()
+    .describe("Unique RSVP invite code to distinguish users"),
 });
 
 export type EventType = z.infer<typeof eventSchema>;
