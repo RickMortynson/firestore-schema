@@ -619,14 +619,18 @@ export declare const userEssentialSchema: z.ZodObject<{
     uid: z.ZodString;
     name: z.ZodString;
     avatarURL: z.ZodString;
+    /** @deprecated */
+    avatar: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     avatarURL: string;
     uid: string;
     name: string;
+    avatar: string;
 }, {
     avatarURL: string;
     uid: string;
     name: string;
+    avatar: string;
 }>;
 export type UserEssential = z.infer<typeof userEssentialSchema>;
 export type User = z.infer<typeof userSchema>;

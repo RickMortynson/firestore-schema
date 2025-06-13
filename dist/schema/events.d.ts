@@ -7,14 +7,17 @@ export declare const eventAgentsSchema: z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
         avatarURL: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     }, {
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     }>;
 }, "strip", z.ZodTypeAny, {
     status: "accepted" | "rejected" | "pending";
@@ -23,6 +26,7 @@ export declare const eventAgentsSchema: z.ZodObject<{
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     };
 }, {
     status: "accepted" | "rejected" | "pending";
@@ -31,6 +35,7 @@ export declare const eventAgentsSchema: z.ZodObject<{
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     };
 }>;
 export declare const eventJoinersSchema: z.ZodObject<{
@@ -40,14 +45,17 @@ export declare const eventJoinersSchema: z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
         avatarURL: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     }, {
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     }>;
     inviteCode: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
@@ -56,6 +64,7 @@ export declare const eventJoinersSchema: z.ZodObject<{
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     };
     phoneNumber?: string | undefined;
     inviteCode?: string | undefined;
@@ -65,6 +74,7 @@ export declare const eventJoinersSchema: z.ZodObject<{
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     };
     phoneNumber?: string | undefined;
     inviteCode?: string | undefined;
@@ -80,14 +90,17 @@ export declare const eventSchema: z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
         avatarURL: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     }, {
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     }>;
     deadline: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     endDate: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
@@ -135,14 +148,17 @@ export declare const eventSchema: z.ZodObject<{
             uid: z.ZodString;
             name: z.ZodString;
             avatarURL: z.ZodString;
+            avatar: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         }, {
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         }>;
         inviteCode: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
@@ -151,6 +167,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
@@ -160,6 +177,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
@@ -171,14 +189,17 @@ export declare const eventSchema: z.ZodObject<{
             uid: z.ZodString;
             name: z.ZodString;
             avatarURL: z.ZodString;
+            avatar: z.ZodString;
         }, "strip", z.ZodTypeAny, {
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         }, {
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         }>;
     }, "strip", z.ZodTypeAny, {
         status: "accepted" | "rejected" | "pending";
@@ -187,6 +208,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
     }, {
         status: "accepted" | "rejected" | "pending";
@@ -195,6 +217,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
     }>, "many">;
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
@@ -207,6 +230,7 @@ export declare const eventSchema: z.ZodObject<{
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
@@ -227,6 +251,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
@@ -238,6 +263,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
     }[];
     description?: string | undefined;
@@ -260,6 +286,7 @@ export declare const eventSchema: z.ZodObject<{
         avatarURL: string;
         uid: string;
         name: string;
+        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
@@ -280,6 +307,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
@@ -291,6 +319,7 @@ export declare const eventSchema: z.ZodObject<{
             avatarURL: string;
             uid: string;
             name: string;
+            avatar: string;
         };
     }[];
     description?: string | undefined;

@@ -14,7 +14,7 @@ export const eventJoinersSchema = z.object({
       .optional()
       .describe("for users without the application"),
   status: z.enum(["going", "rejected", "invited"]),
-  user: userEssentialSchema,
+  user: userEssentialSchema.optional(),
   inviteCode: z
       .string()
       .optional()
@@ -46,7 +46,9 @@ export const eventSchema = z.object({
     .number()
     .optional()
     .describe("exclusively for ticketed experience"),
+  /** @deprecated */
   imageUri: z.string(),
+  imageUrl: z.string(),
   link: z.string().optional(),
   location: z.object({
     location: z.instanceof(GeoPoint),

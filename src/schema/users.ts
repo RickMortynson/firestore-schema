@@ -52,6 +52,8 @@ export const userEssentialSchema = z.object({
   uid: z.string(),
   name: z.string(),
   avatarURL: z.string().url(),
+  /** @deprecated */
+  avatar: z.string().url(),
 })
 
 export type UserEssential = z.infer<typeof userEssentialSchema>
