@@ -607,6 +607,7 @@ export declare const userFriendsSchema: z.ZodObject<{
         fcmToken?: string | undefined;
     };
     createdAt?: Date | Timestamp | undefined;
+    friend?: any;
 }>;
 export declare const userNotificationsSchema: z.ZodObject<{
     activity: z.ZodString;
