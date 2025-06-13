@@ -7,65 +7,75 @@ export declare const eventAgentsSchema: z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
         avatarURL: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     }, {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     }>;
 }, "strip", z.ZodTypeAny, {
-    status: "accepted" | "rejected" | "pending";
     role: "collaborator" | "scanner";
+    status: "pending" | "accepted" | "rejected";
     user: {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     };
 }, {
-    status: "accepted" | "rejected" | "pending";
     role: "collaborator" | "scanner";
+    status: "pending" | "accepted" | "rejected";
     user: {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     };
 }>;
 export declare const eventJoinersSchema: z.ZodObject<{
     phoneNumber: z.ZodOptional<z.ZodString>;
     status: z.ZodEnum<["going", "rejected", "invited"]>;
-    user: z.ZodObject<{
+    user: z.ZodOptional<z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
         avatarURL: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     }, {
-        avatarURL: string;
         uid: string;
         name: string;
-    }>;
+        avatarURL: string;
+        avatar: string;
+    }>>;
     inviteCode: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     status: "rejected" | "going" | "invited";
-    user: {
-        avatarURL: string;
+    user?: {
         uid: string;
         name: string;
-    };
+        avatarURL: string;
+        avatar: string;
+    } | undefined;
     phoneNumber?: string | undefined;
     inviteCode?: string | undefined;
 }, {
     status: "rejected" | "going" | "invited";
-    user: {
-        avatarURL: string;
+    user?: {
         uid: string;
         name: string;
-    };
+        avatarURL: string;
+        avatar: string;
+    } | undefined;
     phoneNumber?: string | undefined;
     inviteCode?: string | undefined;
 }>;
@@ -80,14 +90,17 @@ export declare const eventSchema: z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
         avatarURL: z.ZodString;
+        avatar: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     }, {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     }>;
     deadline: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     endDate: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
@@ -102,7 +115,9 @@ export declare const eventSchema: z.ZodObject<{
         goal: number;
     }>>;
     ticketPrice: z.ZodOptional<z.ZodNumber>;
+    /** @deprecated */
     imageUri: z.ZodString;
+    imageUrl: z.ZodString;
     link: z.ZodOptional<z.ZodString>;
     location: z.ZodObject<{
         location: z.ZodType<GeoPoint, z.ZodTypeDef, GeoPoint>;
@@ -131,36 +146,41 @@ export declare const eventSchema: z.ZodObject<{
     eventJoiners: z.ZodArray<z.ZodObject<{
         phoneNumber: z.ZodOptional<z.ZodString>;
         status: z.ZodEnum<["going", "rejected", "invited"]>;
-        user: z.ZodObject<{
+        user: z.ZodOptional<z.ZodObject<{
             uid: z.ZodString;
             name: z.ZodString;
             avatarURL: z.ZodString;
+            avatar: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         }, {
-            avatarURL: string;
             uid: string;
             name: string;
-        }>;
+            avatarURL: string;
+            avatar: string;
+        }>>;
         inviteCode: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         status: "rejected" | "going" | "invited";
-        user: {
-            avatarURL: string;
+        user?: {
             uid: string;
             name: string;
-        };
+            avatarURL: string;
+            avatar: string;
+        } | undefined;
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }, {
         status: "rejected" | "going" | "invited";
-        user: {
-            avatarURL: string;
+        user?: {
             uid: string;
             name: string;
-        };
+            avatarURL: string;
+            avatar: string;
+        } | undefined;
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }>, "many">;
@@ -171,46 +191,52 @@ export declare const eventSchema: z.ZodObject<{
             uid: z.ZodString;
             name: z.ZodString;
             avatarURL: z.ZodString;
+            avatar: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         }, {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         }>;
     }, "strip", z.ZodTypeAny, {
-        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
+        status: "pending" | "accepted" | "rejected";
         user: {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         };
     }, {
-        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
+        status: "pending" | "accepted" | "rejected";
         user: {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         };
     }>, "many">;
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
 }, "strip", z.ZodTypeAny, {
-    createdAt: Timestamp;
-    activity: string;
     title: string;
     shortId: string;
+    activity: string;
     creator: {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
     imageUri: string;
+    imageUrl: string;
     location: {
         name: string;
         location: GeoPoint;
@@ -223,23 +249,26 @@ export declare const eventSchema: z.ZodObject<{
     viewCount: number;
     eventJoiners: {
         status: "rejected" | "going" | "invited";
-        user: {
-            avatarURL: string;
+        user?: {
             uid: string;
             name: string;
-        };
+            avatarURL: string;
+            avatar: string;
+        } | undefined;
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }[];
     eventAgents: {
-        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
+        status: "pending" | "accepted" | "rejected";
         user: {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         };
     }[];
+    createdAt: Timestamp;
     description?: string | undefined;
     announcements?: string[] | undefined;
     capacity?: number | undefined;
@@ -252,18 +281,19 @@ export declare const eventSchema: z.ZodObject<{
     photos?: string[] | undefined;
     usersChecked?: number | undefined;
 }, {
-    createdAt: Timestamp;
-    activity: string;
     title: string;
     shortId: string;
+    activity: string;
     creator: {
-        avatarURL: string;
         uid: string;
         name: string;
+        avatarURL: string;
+        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
     imageUri: string;
+    imageUrl: string;
     location: {
         name: string;
         location: GeoPoint;
@@ -276,23 +306,26 @@ export declare const eventSchema: z.ZodObject<{
     viewCount: number;
     eventJoiners: {
         status: "rejected" | "going" | "invited";
-        user: {
-            avatarURL: string;
+        user?: {
             uid: string;
             name: string;
-        };
+            avatarURL: string;
+            avatar: string;
+        } | undefined;
         phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }[];
     eventAgents: {
-        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
+        status: "pending" | "accepted" | "rejected";
         user: {
-            avatarURL: string;
             uid: string;
             name: string;
+            avatarURL: string;
+            avatar: string;
         };
     }[];
+    createdAt: Timestamp;
     description?: string | undefined;
     announcements?: string[] | undefined;
     capacity?: number | undefined;
