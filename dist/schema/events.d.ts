@@ -4,707 +4,69 @@ export declare const eventAgentsSchema: z.ZodObject<{
     role: z.ZodEnum<["collaborator", "scanner"]>;
     status: z.ZodEnum<["pending", "accepted", "rejected"]>;
     user: z.ZodObject<{
-        fullName: z.ZodString;
-        username: z.ZodString;
+        uid: z.ZodString;
+        name: z.ZodString;
         avatarURL: z.ZodString;
-        createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
-        dateOfBirth: z.ZodString;
-        formatPreference: z.ZodString;
-        genderIdentity: z.ZodString;
-        phoneNumber: z.ZodString;
-        stripeCustomerId: z.ZodOptional<z.ZodString>;
-        settings: z.ZodObject<{
-            allowInvitesFromStrangers: z.ZodBoolean;
-        }, "strip", z.ZodTypeAny, {
-            allowInvitesFromStrangers: boolean;
-        }, {
-            allowInvitesFromStrangers: boolean;
-        }>;
-        fcmToken: z.ZodOptional<z.ZodString>;
-        permissions: z.ZodObject<{
-            cameraAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            contactAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            calendarAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            locationAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            motionFitnessAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            pushNotifications: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            cameraRollAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            } & {
-                accessType: z.ZodEnum<["limited", "full", "denied"]>;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            }>;
-        }, "strip", z.ZodTypeAny, {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        }, {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        }>;
-        preferredActivities: z.ZodArray<z.ZodString, "many">;
     }, "strip", z.ZodTypeAny, {
-        fullName: string;
-        username: string;
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
+        uid: string;
+        name: string;
     }, {
-        fullName: string;
-        username: string;
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
+        uid: string;
+        name: string;
     }>;
 }, "strip", z.ZodTypeAny, {
-    status: "pending" | "accepted" | "rejected";
+    status: "accepted" | "rejected" | "pending";
     role: "collaborator" | "scanner";
     user: {
-        fullName: string;
-        username: string;
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
+        uid: string;
+        name: string;
     };
 }, {
-    status: "pending" | "accepted" | "rejected";
+    status: "accepted" | "rejected" | "pending";
     role: "collaborator" | "scanner";
     user: {
-        fullName: string;
-        username: string;
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
+        uid: string;
+        name: string;
     };
 }>;
 export declare const eventJoinersSchema: z.ZodObject<{
     phoneNumber: z.ZodOptional<z.ZodString>;
     status: z.ZodEnum<["going", "rejected", "invited"]>;
-    user: z.ZodOptional<z.ZodObject<{
-        fullName: z.ZodString;
-        username: z.ZodString;
+    user: z.ZodObject<{
+        uid: z.ZodString;
+        name: z.ZodString;
         avatarURL: z.ZodString;
-        createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
-        dateOfBirth: z.ZodString;
-        formatPreference: z.ZodString;
-        genderIdentity: z.ZodString;
-        phoneNumber: z.ZodString;
-        stripeCustomerId: z.ZodOptional<z.ZodString>;
-        settings: z.ZodObject<{
-            allowInvitesFromStrangers: z.ZodBoolean;
-        }, "strip", z.ZodTypeAny, {
-            allowInvitesFromStrangers: boolean;
-        }, {
-            allowInvitesFromStrangers: boolean;
-        }>;
-        fcmToken: z.ZodOptional<z.ZodString>;
-        permissions: z.ZodObject<{
-            cameraAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            contactAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            calendarAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            locationAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            motionFitnessAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            pushNotifications: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-            }>;
-            cameraRollAccess: z.ZodObject<{
-                granted: z.ZodBoolean;
-                toggledInApp: z.ZodBoolean;
-            } & {
-                accessType: z.ZodEnum<["limited", "full", "denied"]>;
-            }, "strip", z.ZodTypeAny, {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            }, {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            }>;
-        }, "strip", z.ZodTypeAny, {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        }, {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        }>;
-        preferredActivities: z.ZodArray<z.ZodString, "many">;
     }, "strip", z.ZodTypeAny, {
-        fullName: string;
-        username: string;
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
+        uid: string;
+        name: string;
     }, {
-        fullName: string;
-        username: string;
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
-    }>>;
+        uid: string;
+        name: string;
+    }>;
     inviteCode: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     status: "rejected" | "going" | "invited";
-    phoneNumber?: string | undefined;
-    user?: {
-        fullName: string;
-        username: string;
+    user: {
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
-    } | undefined;
+        uid: string;
+        name: string;
+    };
+    phoneNumber?: string | undefined;
     inviteCode?: string | undefined;
 }, {
     status: "rejected" | "going" | "invited";
-    phoneNumber?: string | undefined;
-    user?: {
-        fullName: string;
-        username: string;
+    user: {
         avatarURL: string;
-        createdAt: Timestamp;
-        dateOfBirth: string;
-        formatPreference: string;
-        genderIdentity: string;
-        phoneNumber: string;
-        settings: {
-            allowInvitesFromStrangers: boolean;
-        };
-        permissions: {
-            cameraAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            contactAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            calendarAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            locationAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            motionFitnessAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            pushNotifications: {
-                granted: boolean;
-                toggledInApp: boolean;
-            };
-            cameraRollAccess: {
-                granted: boolean;
-                toggledInApp: boolean;
-                accessType: "limited" | "full" | "denied";
-            };
-        };
-        preferredActivities: string[];
-        stripeCustomerId?: string | undefined;
-        fcmToken?: string | undefined;
-    } | undefined;
+        uid: string;
+        name: string;
+    };
+    phoneNumber?: string | undefined;
     inviteCode?: string | undefined;
 }>;
 export declare const eventSchema: z.ZodObject<{
@@ -717,15 +79,15 @@ export declare const eventSchema: z.ZodObject<{
     creator: z.ZodObject<{
         uid: z.ZodString;
         name: z.ZodString;
-        avatar: z.ZodString;
+        avatarURL: z.ZodString;
     }, "strip", z.ZodTypeAny, {
+        avatarURL: string;
         uid: string;
         name: string;
-        avatar: string;
     }, {
+        avatarURL: string;
         uid: string;
         name: string;
-        avatar: string;
     }>;
     deadline: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     endDate: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
@@ -769,720 +131,82 @@ export declare const eventSchema: z.ZodObject<{
     eventJoiners: z.ZodArray<z.ZodObject<{
         phoneNumber: z.ZodOptional<z.ZodString>;
         status: z.ZodEnum<["going", "rejected", "invited"]>;
-        user: z.ZodOptional<z.ZodObject<{
-            fullName: z.ZodString;
-            username: z.ZodString;
+        user: z.ZodObject<{
+            uid: z.ZodString;
+            name: z.ZodString;
             avatarURL: z.ZodString;
-            createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
-            dateOfBirth: z.ZodString;
-            formatPreference: z.ZodString;
-            genderIdentity: z.ZodString;
-            phoneNumber: z.ZodString;
-            stripeCustomerId: z.ZodOptional<z.ZodString>;
-            settings: z.ZodObject<{
-                allowInvitesFromStrangers: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                allowInvitesFromStrangers: boolean;
-            }, {
-                allowInvitesFromStrangers: boolean;
-            }>;
-            fcmToken: z.ZodOptional<z.ZodString>;
-            permissions: z.ZodObject<{
-                cameraAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                contactAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                calendarAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                locationAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                motionFitnessAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                pushNotifications: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                cameraRollAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                } & {
-                    accessType: z.ZodEnum<["limited", "full", "denied"]>;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            }, {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            }>;
-            preferredActivities: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         }, {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
-        }>>;
+            uid: string;
+            name: string;
+        }>;
         inviteCode: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         status: "rejected" | "going" | "invited";
-        phoneNumber?: string | undefined;
-        user?: {
-            fullName: string;
-            username: string;
+        user: {
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
-        } | undefined;
+            uid: string;
+            name: string;
+        };
+        phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }, {
         status: "rejected" | "going" | "invited";
-        phoneNumber?: string | undefined;
-        user?: {
-            fullName: string;
-            username: string;
+        user: {
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
-        } | undefined;
+            uid: string;
+            name: string;
+        };
+        phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }>, "many">;
     eventAgents: z.ZodArray<z.ZodObject<{
         role: z.ZodEnum<["collaborator", "scanner"]>;
         status: z.ZodEnum<["pending", "accepted", "rejected"]>;
         user: z.ZodObject<{
-            fullName: z.ZodString;
-            username: z.ZodString;
+            uid: z.ZodString;
+            name: z.ZodString;
             avatarURL: z.ZodString;
-            createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
-            dateOfBirth: z.ZodString;
-            formatPreference: z.ZodString;
-            genderIdentity: z.ZodString;
-            phoneNumber: z.ZodString;
-            stripeCustomerId: z.ZodOptional<z.ZodString>;
-            settings: z.ZodObject<{
-                allowInvitesFromStrangers: z.ZodBoolean;
-            }, "strip", z.ZodTypeAny, {
-                allowInvitesFromStrangers: boolean;
-            }, {
-                allowInvitesFromStrangers: boolean;
-            }>;
-            fcmToken: z.ZodOptional<z.ZodString>;
-            permissions: z.ZodObject<{
-                cameraAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                contactAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                calendarAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                locationAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                motionFitnessAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                pushNotifications: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                }>;
-                cameraRollAccess: z.ZodObject<{
-                    granted: z.ZodBoolean;
-                    toggledInApp: z.ZodBoolean;
-                } & {
-                    accessType: z.ZodEnum<["limited", "full", "denied"]>;
-                }, "strip", z.ZodTypeAny, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                }, {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                }>;
-            }, "strip", z.ZodTypeAny, {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            }, {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            }>;
-            preferredActivities: z.ZodArray<z.ZodString, "many">;
         }, "strip", z.ZodTypeAny, {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         }, {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         }>;
     }, "strip", z.ZodTypeAny, {
-        status: "pending" | "accepted" | "rejected";
+        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
         user: {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         };
     }, {
-        status: "pending" | "accepted" | "rejected";
+        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
         user: {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         };
     }>, "many">;
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
 }, "strip", z.ZodTypeAny, {
     createdAt: Timestamp;
+    activity: string;
     title: string;
     shortId: string;
-    activity: string;
     creator: {
+        avatarURL: string;
         uid: string;
         name: string;
-        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
@@ -1499,105 +223,21 @@ export declare const eventSchema: z.ZodObject<{
     viewCount: number;
     eventJoiners: {
         status: "rejected" | "going" | "invited";
-        phoneNumber?: string | undefined;
-        user?: {
-            fullName: string;
-            username: string;
+        user: {
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
-        } | undefined;
+            uid: string;
+            name: string;
+        };
+        phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }[];
     eventAgents: {
-        status: "pending" | "accepted" | "rejected";
+        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
         user: {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         };
     }[];
     description?: string | undefined;
@@ -1613,13 +253,13 @@ export declare const eventSchema: z.ZodObject<{
     usersChecked?: number | undefined;
 }, {
     createdAt: Timestamp;
+    activity: string;
     title: string;
     shortId: string;
-    activity: string;
     creator: {
+        avatarURL: string;
         uid: string;
         name: string;
-        avatar: string;
     };
     deadline: Timestamp;
     endDate: Timestamp;
@@ -1636,105 +276,21 @@ export declare const eventSchema: z.ZodObject<{
     viewCount: number;
     eventJoiners: {
         status: "rejected" | "going" | "invited";
-        phoneNumber?: string | undefined;
-        user?: {
-            fullName: string;
-            username: string;
+        user: {
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
-        } | undefined;
+            uid: string;
+            name: string;
+        };
+        phoneNumber?: string | undefined;
         inviteCode?: string | undefined;
     }[];
     eventAgents: {
-        status: "pending" | "accepted" | "rejected";
+        status: "accepted" | "rejected" | "pending";
         role: "collaborator" | "scanner";
         user: {
-            fullName: string;
-            username: string;
             avatarURL: string;
-            createdAt: Timestamp;
-            dateOfBirth: string;
-            formatPreference: string;
-            genderIdentity: string;
-            phoneNumber: string;
-            settings: {
-                allowInvitesFromStrangers: boolean;
-            };
-            permissions: {
-                cameraAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                contactAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                calendarAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                locationAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                motionFitnessAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                pushNotifications: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                };
-                cameraRollAccess: {
-                    granted: boolean;
-                    toggledInApp: boolean;
-                    accessType: "limited" | "full" | "denied";
-                };
-            };
-            preferredActivities: string[];
-            stripeCustomerId?: string | undefined;
-            fcmToken?: string | undefined;
+            uid: string;
+            name: string;
         };
     }[];
     description?: string | undefined;
