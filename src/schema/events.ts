@@ -1,11 +1,11 @@
 import { z } from "zod";
-import { baseUserSchema } from "./types.js";
 import { Timestamp, GeoPoint } from "@firebase/firestore";
+import { userEssentialSchema } from "./users";
 
 export const eventAgentsSchema = z.object({
   role: z.enum(["collaborator", "scanner"]),
   status: z.enum(["pending", "accepted", "rejected"]),
-  user: baseUserSchema,
+  user: userEssentialSchema,
 });
 
 export const eventJoinersSchema = z.object({
@@ -14,7 +14,7 @@ export const eventJoinersSchema = z.object({
       .optional()
       .describe("for users without the application"),
   status: z.enum(["going", "rejected", "invited"]),
-  user: baseUserSchema.optional(),
+  user: userEssentialSchema,
   inviteCode: z
       .string()
       .optional()
@@ -28,11 +28,7 @@ export const eventSchema = z.object({
   description: z.string().optional(),
   announcements: z.array(z.string()).optional(),
   capacity: z.number().optional(),
-  creator: z.object({
-    uid: z.string(),
-    name: z.string(),
-    avatar: z.string(),
-  }),
+  creator: userEssentialSchema,
   deadline: z
     .instanceof(Timestamp)
     .describe(
