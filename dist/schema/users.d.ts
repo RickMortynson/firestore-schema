@@ -506,8 +506,8 @@ export declare const userFriendsSchema: z.ZodObject<{
     status: z.ZodEnum<["sent", "accepted", "rejected", "pending"]>;
     createdAt: z.ZodUnion<[z.ZodDefault<z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>>, z.ZodDefault<z.ZodType<Date, z.ZodTypeDef, Date>>]>;
 }, "strip", z.ZodTypeAny, {
-    createdAt: Date | Timestamp;
     status: "sent" | "accepted" | "rejected" | "pending";
+    createdAt: Date | Timestamp;
     friend: {
         fullName: string;
         username: string;
@@ -607,7 +607,6 @@ export declare const userFriendsSchema: z.ZodObject<{
         fcmToken?: string | undefined;
     };
     createdAt?: Date | Timestamp | undefined;
-    friend?: any;
 }>;
 export declare const userNotificationsSchema: z.ZodObject<{
     activity: z.ZodString;

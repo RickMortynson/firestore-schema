@@ -61,8 +61,8 @@ export declare const groupMessagesSchema: z.ZodObject<{
     }>;
     createdAt: z.ZodUnion<[z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>, z.ZodType<Date, z.ZodTypeDef, Date>]>;
 }, "strip", z.ZodTypeAny, {
-    createdAt: Date | Timestamp;
     message: string;
+    createdAt: Date | Timestamp;
     senderId: {
         avatarURL: string;
         uid: string;
@@ -70,8 +70,8 @@ export declare const groupMessagesSchema: z.ZodObject<{
         avatar: string;
     };
 }, {
-    createdAt: Date | Timestamp;
     message: string;
+    createdAt: Date | Timestamp;
     senderId: {
         avatarURL: string;
         uid: string;

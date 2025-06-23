@@ -18,12 +18,13 @@ export const eventJoinersSchema = z.object({
   inviteCode: z
       .string()
       .optional()
-      .describe("Unique RSVP invite code to distinguish users"),
+      .describe("Unique RSVP invite code to distinguish users"), // xxxx-yyyy-zzzz
 });
 
 export const eventSchema = z.object({
   title: z.string(),
-  shortId: z.string(),
+  type: z.enum(["ticketed", "fundraising", "base"]),
+  shortId: z.string(), // xxxx-yyyy
   activity: z.string().describe("TODO: must be a enum"),
   description: z.string().optional(),
   announcements: z.array(z.string()).optional(),
@@ -37,6 +38,7 @@ export const eventSchema = z.object({
   endDate: z.instanceof(Timestamp),
   fundraising: z
     .object({
+      perPerson: z.number(),
       accumulated: z.number(),
       goal: z.number(),
     })
