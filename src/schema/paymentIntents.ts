@@ -9,6 +9,8 @@ export const paymentIntentSchema = z.object({
     created: z.number(),
     paymentMethod: z.string().nullable(),
     ticketCount: z.number().optional().nullable(),
+    customer: z.string(),
+    currency: z.string().nullable(),
     createdAt: z.instanceof(Timestamp),
     updatedAt: z.instanceof(Timestamp),
 })

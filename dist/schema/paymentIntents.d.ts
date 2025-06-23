@@ -8,6 +8,8 @@ export declare const paymentIntentSchema: z.ZodObject<{
     created: z.ZodNumber;
     paymentMethod: z.ZodNullable<z.ZodString>;
     ticketCount: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    customer: z.ZodString;
+    currency: z.ZodNullable<z.ZodString>;
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     updatedAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
 }, "strip", z.ZodTypeAny, {
@@ -17,6 +19,8 @@ export declare const paymentIntentSchema: z.ZodObject<{
     status: string;
     created: number;
     paymentMethod: string | null;
+    customer: string;
+    currency: string | null;
     createdAt: Timestamp;
     updatedAt: Timestamp;
     ticketCount?: number | null | undefined;
@@ -27,6 +31,8 @@ export declare const paymentIntentSchema: z.ZodObject<{
     status: string;
     created: number;
     paymentMethod: string | null;
+    customer: string;
+    currency: string | null;
     createdAt: Timestamp;
     updatedAt: Timestamp;
     ticketCount?: number | null | undefined;
