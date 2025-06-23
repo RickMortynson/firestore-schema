@@ -2,6 +2,8 @@ import { z } from "zod";
 import { Timestamp, GeoPoint } from "@firebase/firestore";
 import { userEssentialSchema } from "./users";
 
+export const eventTypeSchema = z.enum(["ticketed", "fundraising", "base"]);
+
 export const eventAgentsSchema = z.object({
   role: z.enum(["collaborator", "scanner"]),
   status: z.enum(["pending", "accepted", "rejected"]),
@@ -23,7 +25,7 @@ export const eventJoinersSchema = z.object({
 
 export const eventSchema = z.object({
   title: z.string(),
-  type: z.enum(["ticketed", "fundraising", "base"]),
+  type: eventTypeSchema,
   shortId: z.string(), // xxxx-yyyy
   activity: z.string().describe("TODO: must be a enum"),
   description: z.string().optional(),
@@ -41,6 +43,7 @@ export const eventSchema = z.object({
       perPerson: z.number(),
       accumulated: z.number(),
       goal: z.number(),
+      goalReached: z.boolean().optional().describe("automatically set to true when the goal is reached, otherwise may be undefined"),
     })
     .optional()
     .describe("exclusively for fundraising experience"),
