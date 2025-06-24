@@ -352,6 +352,20 @@ export declare const eventSchema: z.ZodObject<{
     photos?: string[] | undefined;
     usersChecked?: number | undefined;
 }>;
+export declare const eventTicketSchema: z.ZodObject<{
+    eventId: z.ZodString;
+    userId: z.ZodString;
+    createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
+}, "strip", z.ZodTypeAny, {
+    createdAt: Timestamp;
+    eventId: string;
+    userId: string;
+}, {
+    createdAt: Timestamp;
+    eventId: string;
+    userId: string;
+}>;
+export type EventTicketType = z.infer<typeof eventTicketSchema>;
 export type EventType = z.infer<typeof eventSchema>;
 export type EventAgentsType = z.infer<typeof eventAgentsSchema>;
 export type EventJoinersType = z.infer<typeof eventJoinersSchema>;

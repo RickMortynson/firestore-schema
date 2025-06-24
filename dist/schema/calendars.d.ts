@@ -8,18 +8,18 @@ export declare const calendarSchema: z.ZodObject<{
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     updatedAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
 }, "strip", z.ZodTypeAny, {
-    eventId: string;
+    startDate: Timestamp;
     createdAt: Timestamp;
-    updatedAt: Timestamp;
+    eventId: string;
     joinerId: string;
     eventType: "ticketed" | "fundraising" | "base";
-    startDate: Timestamp;
+    updatedAt: Timestamp;
 }, {
-    eventId: string;
+    startDate: Timestamp;
     createdAt: Timestamp;
-    updatedAt: Timestamp;
+    eventId: string;
     joinerId: string;
     eventType: "ticketed" | "fundraising" | "base";
-    startDate: Timestamp;
+    updatedAt: Timestamp;
 }>;
 export type CalendarType = z.infer<typeof calendarSchema>;

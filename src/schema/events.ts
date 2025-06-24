@@ -72,6 +72,13 @@ export const eventSchema = z.object({
   createdAt: z.instanceof(Timestamp)
 });
 
+export const eventTicketSchema = z.object({
+  eventId: z.string(),
+  userId: z.string(),
+  createdAt: z.instanceof(Timestamp),
+})
+
+export type EventTicketType = z.infer<typeof eventTicketSchema>;
 export type EventType = z.infer<typeof eventSchema>;
 export type EventAgentsType = z.infer<typeof eventAgentsSchema>;
 export type EventJoinersType = z.infer<typeof eventJoinersSchema>;

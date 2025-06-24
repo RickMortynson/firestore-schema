@@ -65,3 +65,8 @@ export const eventSchema = z.object({
     eventAgents: z.array(eventAgentsSchema),
     createdAt: z.instanceof(Timestamp)
 });
+export const eventTicketSchema = z.object({
+    eventId: z.string(),
+    userId: z.string(),
+    createdAt: z.instanceof(Timestamp),
+});
