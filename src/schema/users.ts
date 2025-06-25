@@ -37,7 +37,7 @@ export const userSchema = z.object({
 
 export const userFriendsSchema = z.object({
   friend: userSchema,
-  status: z.enum(['sent', 'accepted', 'rejected', 'pending']),
+  // status: z.enum(['sent', 'accepted', 'rejected', 'pending']),
   createdAt: z.union([
     z.instanceof(Timestamp).default(() => Timestamp.now()),
     z.instanceof(Date).default(() => new Date()),
@@ -45,7 +45,10 @@ export const userFriendsSchema = z.object({
 })
 
 export const userNotificationsSchema = z.object({
-  activity: z.string(),
+  title: z.string(),
+  body: z.string(),
+  type: z.enum(["message", "friend_request", "friend_accepted", "event_invite", "event_update", "group_message", "contact_joined_app", "user_rejected_event"]),
+  data: z.record(z.string()).optional(),
 })
 
 export const userEssentialSchema = z.object({
@@ -55,8 +58,22 @@ export const userEssentialSchema = z.object({
   /** @deprecated */
   avatar: z.string().url(),
 })
+export const userEventInvitesSchema = z.object({
+  eventId: z.string(),
+  type: z.enum(["makingPlans", "fundraising", "ticketedExperience"]),
+})
+
+export const userFriendRequestsSchema = z.object({
+  senderId: z.string(),
+  fullName: z.string(),
+  mutualFriendsCount: z.number(),
+  username: z.string(),
+  status: z.enum(['accepted', 'rejected', 'pending']),
+})
 
 export type UserEssential = z.infer<typeof userEssentialSchema>
 export type User = z.infer<typeof userSchema>
 export type UserFriends = z.infer<typeof userFriendsSchema>
 export type UserNotifications = z.infer<typeof userNotificationsSchema>
+export type UserEventInvites = z.infer<typeof userEventInvitesSchema>
+export type UserFriendRequests = z.infer<typeof userFriendRequestsSchema>
