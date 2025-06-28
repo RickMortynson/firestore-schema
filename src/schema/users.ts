@@ -49,6 +49,7 @@ export const userNotificationsSchema = z.object({
   body: z.string(),
   type: z.enum(["message", "friend_request", "friend_accepted", "event_invite", "event_update", "group_message", "contact_joined_app", "user_rejected_event"]),
   data: z.record(z.string()).optional(),
+  createdAt: z.instanceof(Timestamp),
 })
 
 export const userEssentialSchema = z.object({
@@ -61,6 +62,7 @@ export const userEssentialSchema = z.object({
 export const userEventInvitesSchema = z.object({
   eventId: z.string(),
   type: z.enum(["makingPlans", "fundraising", "ticketedExperience"]),
+  createdAt: z.instanceof(Timestamp),
 })
 
 export const userFriendRequestsSchema = z.object({
@@ -69,6 +71,7 @@ export const userFriendRequestsSchema = z.object({
   mutualFriendsCount: z.number(),
   username: z.string(),
   status: z.enum(['accepted', 'rejected', 'pending']),
+  createdAt: z.instanceof(Timestamp),
 })
 
 export type UserEssential = z.infer<typeof userEssentialSchema>
