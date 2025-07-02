@@ -67,7 +67,7 @@ export const eventSchema = z.object({
   startDate: z.instanceof(Timestamp),
   usersChecked: z.number().describe("for ticketing experiences").optional(),
   viewCount: z.number(),
-  eventJoiners: z.array(eventJoinersSchema),
+  // eventJoiners: z.array(eventJoinersSchema),
   eventAgents: z.array(eventAgentsSchema),
   createdAt: z.instanceof(Timestamp)
 });
