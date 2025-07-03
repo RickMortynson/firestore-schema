@@ -506,8 +506,8 @@ export declare const userFriendsSchema: z.ZodObject<{
     status: z.ZodEnum<["sent", "accepted", "rejected", "pending"]>;
     createdAt: z.ZodUnion<[z.ZodDefault<z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>>, z.ZodDefault<z.ZodType<Date, z.ZodTypeDef, Date>>]>;
 }, "strip", z.ZodTypeAny, {
-    status: "sent" | "accepted" | "rejected" | "pending";
     createdAt: Date | Timestamp;
+    status: "sent" | "accepted" | "rejected" | "pending";
     friend: {
         fullName: string;
         username: string;
@@ -620,17 +620,17 @@ export declare const userEssentialSchema: z.ZodObject<{
     name: z.ZodString;
     avatarURL: z.ZodString;
     /** @deprecated */
-    avatar: z.ZodString;
+    avatar: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     avatarURL: string;
     uid: string;
     name: string;
-    avatar: string;
+    avatar?: string | undefined;
 }, {
     avatarURL: string;
     uid: string;
     name: string;
-    avatar: string;
+    avatar?: string | undefined;
 }>;
 export type UserEssential = z.infer<typeof userEssentialSchema>;
 export type User = z.infer<typeof userSchema>;

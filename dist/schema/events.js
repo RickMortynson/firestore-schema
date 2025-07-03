@@ -46,7 +46,7 @@ export const eventSchema = z.object({
         .optional()
         .describe("exclusively for ticketed experience"),
     /** @deprecated */
-    imageUri: z.string(),
+    imageUri: z.string().optional(),
     imageUrl: z.string(),
     link: z.string().optional(),
     location: z.object({

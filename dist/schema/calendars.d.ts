@@ -8,15 +8,15 @@ export declare const calendarSchema: z.ZodObject<{
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     updatedAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
 }, "strip", z.ZodTypeAny, {
-    startDate: Timestamp;
     createdAt: Timestamp;
+    startDate: Timestamp;
     eventId: string;
     joinerId: string;
     eventType: "ticketed" | "fundraising" | "base";
     updatedAt: Timestamp;
 }, {
-    startDate: Timestamp;
     createdAt: Timestamp;
+    startDate: Timestamp;
     eventId: string;
     joinerId: string;
     eventType: "ticketed" | "fundraising" | "base";

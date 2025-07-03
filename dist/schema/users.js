@@ -48,5 +48,5 @@ export const userEssentialSchema = z.object({
     name: z.string(),
     avatarURL: z.string().url(),
     /** @deprecated */
-    avatar: z.string().url(),
+    avatar: z.string().url().optional(),
 });
