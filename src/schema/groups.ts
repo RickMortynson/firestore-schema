@@ -12,6 +12,7 @@ export const groupSchema = z.object({
   event: z.string().optional(), // TODO: mark event ref
   name: z.string().optional(),
   type: z.enum(["people", "activities"]),
+  memberIds: z.array(z.string()),
   members: z.array(userEssentialSchema),
   lastMessage: groupMessagesSchema,
 }).describe("for 'people' type, the image should be taken from the avatar of the other participant; " +
