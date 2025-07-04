@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { Timestamp } from "@firebase/firestore";
-export declare const paymentIntentSchema: z.ZodObject<{
+export declare const stripeIntentSchema: z.ZodObject<{
     type: z.ZodEnum<["paymentIntent", "setupIntent"]>;
     uid: z.ZodString;
     eventId: z.ZodString;
@@ -40,4 +40,4 @@ export declare const paymentIntentSchema: z.ZodObject<{
     updatedAt: Timestamp;
     ticketCount?: number | null | undefined;
 }>;
-export type PaymentIntentType = z.infer<typeof paymentIntentSchema>;
+export type StripeIntentType = z.infer<typeof stripeIntentSchema>;
