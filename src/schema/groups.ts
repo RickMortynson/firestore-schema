@@ -4,7 +4,7 @@ import { userEssentialSchema } from "./users";
 
 export const groupMessagesSchema = z.object({
   message: z.string(),
-  senderId: userEssentialSchema,
+  sender: userEssentialSchema,
   createdAt: z.union([z.instanceof(Timestamp), z.instanceof(Date)]),
 })
 
