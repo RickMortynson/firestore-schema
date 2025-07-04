@@ -9,7 +9,7 @@ export const groupMessagesSchema = z.object({
 })
 
 export const groupSchema = z.object({
-  event: z.string(), // TODO: mark event ref
+  event: z.string().optional(), // TODO: mark event ref
   name: z.string().optional(),
   type: z.enum(["people", "activities"]),
   members: z.array(userEssentialSchema),
