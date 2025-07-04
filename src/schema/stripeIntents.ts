@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { Timestamp } from "@firebase/firestore";
 
-export const paymentIntentSchema = z.object({
+export const stripeIntentSchema = z.object({
     type: z.enum(["paymentIntent", "setupIntent"]),
     uid: z.string(),
     eventId: z.string(),
@@ -16,4 +16,4 @@ export const paymentIntentSchema = z.object({
     updatedAt: z.instanceof(Timestamp),
 })
 
-export type PaymentIntentType = z.infer<typeof paymentIntentSchema>
+export type StripeIntentType = z.infer<typeof stripeIntentSchema>
