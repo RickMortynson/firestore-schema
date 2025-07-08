@@ -10,19 +10,6 @@ export const eventAgentsSchema = z.object({
   user: userEssentialSchema,
 });
 
-export const eventJoinersSchema = z.object({
-  phoneNumber: z
-    .string()
-    .optional()
-    .describe("for users without the application"),
-  status: z.enum(["going", "rejected", "invited"]),
-  user: userEssentialSchema.optional(),
-  inviteCode: z
-    .string()
-    .optional()
-    .describe("Unique RSVP invite code to distinguish users"), // xxxx-yyyy-zzzz
-});
-
 export const eventSchema = z.object({
   title: z.string(),
   type: eventTypeSchema,
@@ -72,7 +59,6 @@ export const eventSchema = z.object({
   startDate: z.instanceof(Timestamp),
   usersChecked: z.number().describe("for ticketing experiences").optional(),
   viewCount: z.number(),
-  // eventJoiners: z.array(eventJoinersSchema),
   eventAgents: z.array(eventAgentsSchema),
   createdAt: z.instanceof(Timestamp),
 });
@@ -86,4 +72,3 @@ export const eventTicketSchema = z.object({
 export type EventTicketType = z.infer<typeof eventTicketSchema>;
 export type EventType = z.infer<typeof eventSchema>;
 export type EventAgentsType = z.infer<typeof eventAgentsSchema>;
-export type EventJoinersType = z.infer<typeof eventJoinersSchema>;
