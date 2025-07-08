@@ -7,18 +7,6 @@ export const eventAgentsSchema = z.object({
     status: z.enum(["pending", "accepted", "rejected"]),
     user: userEssentialSchema,
 });
-export const eventJoinersSchema = z.object({
-    phoneNumber: z
-        .string()
-        .optional()
-        .describe("for users without the application"),
-    status: z.enum(["going", "rejected", "invited"]),
-    user: userEssentialSchema.optional(),
-    inviteCode: z
-        .string()
-        .optional()
-        .describe("Unique RSVP invite code to distinguish users"), // xxxx-yyyy-zzzz
-});
 export const eventSchema = z.object({
     title: z.string(),
     type: eventTypeSchema,
@@ -37,7 +25,10 @@ export const eventSchema = z.object({
         perPerson: z.number(),
         accumulated: z.number(),
         goal: z.number(),
-        goalReached: z.boolean().optional().describe("automatically set to true when the goal is reached, otherwise may be undefined"),
+        goalReached: z
+            .boolean()
+            .optional()
+            .describe("automatically set to true when the goal is reached, otherwise may be undefined"),
     })
         .optional()
         .describe("exclusively for fundraising experience"),
@@ -61,9 +52,8 @@ export const eventSchema = z.object({
     startDate: z.instanceof(Timestamp),
     usersChecked: z.number().describe("for ticketing experiences").optional(),
     viewCount: z.number(),
-    eventJoiners: z.array(eventJoinersSchema),
     eventAgents: z.array(eventAgentsSchema),
-    createdAt: z.instanceof(Timestamp)
+    createdAt: z.instanceof(Timestamp),
 });
 export const eventTicketSchema = z.object({
     eventId: z.string(),
