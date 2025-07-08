@@ -64,9 +64,9 @@ export const userNotificationsSchema = z.object({
 export const userEssentialSchema = z.object({
   uid: z.string(),
   name: z.string(),
-  avatarURL: z.string().url(),
+  avatarURL: z.string().url().optional(),
   /** @deprecated */
-  avatar: z.string().url(),
+  avatar: z.string().url().optional(),
 });
 
 export const userFriendRequestsSchema = z.object({
