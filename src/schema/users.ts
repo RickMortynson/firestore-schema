@@ -1,4 +1,4 @@
-import { z } from 'zod'
+import { z } from "zod";
 import { Timestamp } from "@firebase/firestore";
 
 const permissionSchema = z.object({
@@ -12,7 +12,7 @@ export const userSchema = z.object({
   avatarURL: z.string().url(),
   createdAt: z.instanceof(Timestamp),
   dateOfBirth: z.string().datetime(),
-  formatPreference: z.string().describe('In-person, Online, Hybrid'),
+  formatPreference: z.string().describe("In-person, Online, Hybrid"),
   genderIdentity: z.string(),
   phoneNumber: z.string().regex(/^\+1\d{10}$/),
   stripeCustomerId: z.string().optional(),
@@ -28,35 +28,58 @@ export const userSchema = z.object({
     motionFitnessAccess: permissionSchema,
     pushNotifications: permissionSchema,
     cameraRollAccess: permissionSchema.extend({
-      accessType: z.enum(['limited', 'full', 'denied']),
+      accessType: z.enum(["limited", "full", "denied"]),
     }),
   }),
   preferredActivities: z.array(z.string()),
   starredEventsId: z.array(z.string()),
-})
+});
 
 export const userFriendsSchema = z.object({
   friend: userSchema,
-  status: z.enum(['sent', 'accepted', 'rejected', 'pending']),
+  // status: z.enum(['sent', 'accepted', 'rejected', 'pending']),
   createdAt: z.union([
     z.instanceof(Timestamp).default(() => Timestamp.now()),
     z.instanceof(Date).default(() => new Date()),
   ]),
-})
+});
 
 export const userNotificationsSchema = z.object({
-  activity: z.string(),
-})
+  title: z.string(),
+  body: z.string(),
+  type: z.enum([
+    "message",
+    "friend_request",
+    "friend_accepted",
+    "event_invite",
+    "event_update",
+    "group_message",
+    "contact_joined_app",
+    "user_rejected_event",
+  ]),
+  data: z.record(z.string()).optional(),
+  createdAt: z.instanceof(Timestamp),
+});
 
 export const userEssentialSchema = z.object({
   uid: z.string(),
   name: z.string(),
-  avatarURL: z.string().url(),
+  avatarURL: z.string().url().optional(),
   /** @deprecated */
   avatar: z.string().url().optional(),
-})
+});
 
-export type UserEssential = z.infer<typeof userEssentialSchema>
-export type User = z.infer<typeof userSchema>
-export type UserFriends = z.infer<typeof userFriendsSchema>
-export type UserNotifications = z.infer<typeof userNotificationsSchema>
+export const userFriendRequestsSchema = z.object({
+  senderId: z.string(),
+  fullName: z.string(),
+  mutualFriendsCount: z.number(),
+  username: z.string(),
+  status: z.enum(["accepted", "rejected", "pending"]),
+  createdAt: z.instanceof(Timestamp),
+});
+
+export type UserEssential = z.infer<typeof userEssentialSchema>;
+export type User = z.infer<typeof userSchema>;
+export type UserFriends = z.infer<typeof userFriendsSchema>;
+export type UserNotifications = z.infer<typeof userNotificationsSchema>;
+export type UserFriendRequests = z.infer<typeof userFriendRequestsSchema>;

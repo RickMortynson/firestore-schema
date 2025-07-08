@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 import { Timestamp } from "@firebase/firestore";
 export declare const userSchema: z.ZodObject<{
     fullName: z.ZodString;
@@ -503,11 +503,9 @@ export declare const userFriendsSchema: z.ZodObject<{
         stripeCustomerId?: string | undefined;
         fcmToken?: string | undefined;
     }>;
-    status: z.ZodEnum<["sent", "accepted", "rejected", "pending"]>;
     createdAt: z.ZodUnion<[z.ZodDefault<z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>>, z.ZodDefault<z.ZodType<Date, z.ZodTypeDef, Date>>]>;
 }, "strip", z.ZodTypeAny, {
     createdAt: Date | Timestamp;
-    status: "sent" | "accepted" | "rejected" | "pending";
     friend: {
         fullName: string;
         username: string;
@@ -557,7 +555,6 @@ export declare const userFriendsSchema: z.ZodObject<{
         fcmToken?: string | undefined;
     };
 }, {
-    status: "sent" | "accepted" | "rejected" | "pending";
     friend: {
         fullName: string;
         username: string;
@@ -609,30 +606,65 @@ export declare const userFriendsSchema: z.ZodObject<{
     createdAt?: Date | Timestamp | undefined;
 }>;
 export declare const userNotificationsSchema: z.ZodObject<{
-    activity: z.ZodString;
+    title: z.ZodString;
+    body: z.ZodString;
+    type: z.ZodEnum<["message", "friend_request", "friend_accepted", "event_invite", "event_update", "group_message", "contact_joined_app", "user_rejected_event"]>;
+    data: z.ZodOptional<z.ZodRecord<z.ZodString, z.ZodString>>;
+    createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
 }, "strip", z.ZodTypeAny, {
-    activity: string;
+    createdAt: Timestamp;
+    type: "message" | "friend_request" | "friend_accepted" | "event_invite" | "event_update" | "group_message" | "contact_joined_app" | "user_rejected_event";
+    title: string;
+    body: string;
+    data?: Record<string, string> | undefined;
 }, {
-    activity: string;
+    createdAt: Timestamp;
+    type: "message" | "friend_request" | "friend_accepted" | "event_invite" | "event_update" | "group_message" | "contact_joined_app" | "user_rejected_event";
+    title: string;
+    body: string;
+    data?: Record<string, string> | undefined;
 }>;
 export declare const userEssentialSchema: z.ZodObject<{
     uid: z.ZodString;
     name: z.ZodString;
-    avatarURL: z.ZodString;
+    avatarURL: z.ZodOptional<z.ZodString>;
     /** @deprecated */
     avatar: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    avatarURL: string;
     uid: string;
     name: string;
+    avatarURL?: string | undefined;
     avatar?: string | undefined;
 }, {
-    avatarURL: string;
     uid: string;
     name: string;
+    avatarURL?: string | undefined;
     avatar?: string | undefined;
+}>;
+export declare const userFriendRequestsSchema: z.ZodObject<{
+    senderId: z.ZodString;
+    fullName: z.ZodString;
+    mutualFriendsCount: z.ZodNumber;
+    username: z.ZodString;
+    status: z.ZodEnum<["accepted", "rejected", "pending"]>;
+    createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
+}, "strip", z.ZodTypeAny, {
+    fullName: string;
+    username: string;
+    createdAt: Timestamp;
+    status: "accepted" | "rejected" | "pending";
+    senderId: string;
+    mutualFriendsCount: number;
+}, {
+    fullName: string;
+    username: string;
+    createdAt: Timestamp;
+    status: "accepted" | "rejected" | "pending";
+    senderId: string;
+    mutualFriendsCount: number;
 }>;
 export type UserEssential = z.infer<typeof userEssentialSchema>;
 export type User = z.infer<typeof userSchema>;
 export type UserFriends = z.infer<typeof userFriendsSchema>;
 export type UserNotifications = z.infer<typeof userNotificationsSchema>;
+export type UserFriendRequests = z.infer<typeof userFriendRequestsSchema>;
