@@ -1,0 +1,43 @@
+import { z } from "zod";
+import { Timestamp } from "@firebase/firestore";
+export declare const stripeIntentSchema: z.ZodObject<{
+    type: z.ZodEnum<["paymentIntent", "setupIntent"]>;
+    uid: z.ZodString;
+    eventId: z.ZodString;
+    amount: z.ZodNumber;
+    status: z.ZodString;
+    created: z.ZodNumber;
+    paymentMethod: z.ZodNullable<z.ZodString>;
+    ticketCount: z.ZodNullable<z.ZodOptional<z.ZodNumber>>;
+    customer: z.ZodString;
+    currency: z.ZodNullable<z.ZodString>;
+    createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
+    updatedAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
+}, "strip", z.ZodTypeAny, {
+    type: "paymentIntent" | "setupIntent";
+    status: string;
+    uid: string;
+    eventId: string;
+    amount: number;
+    created: number;
+    paymentMethod: string | null;
+    customer: string;
+    currency: string | null;
+    createdAt: Timestamp;
+    updatedAt: Timestamp;
+    ticketCount?: number | null | undefined;
+}, {
+    type: "paymentIntent" | "setupIntent";
+    status: string;
+    uid: string;
+    eventId: string;
+    amount: number;
+    created: number;
+    paymentMethod: string | null;
+    customer: string;
+    currency: string | null;
+    createdAt: Timestamp;
+    updatedAt: Timestamp;
+    ticketCount?: number | null | undefined;
+}>;
+export type StripeIntentType = z.infer<typeof stripeIntentSchema>;
