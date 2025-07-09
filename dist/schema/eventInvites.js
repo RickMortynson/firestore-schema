@@ -13,6 +13,7 @@ export const userEventInvitesSchema = z.intersection(z.object({
     }),
     z.object({
         inviteeType: z.literal("rsvp"),
-        phoneNumber: z.string().optional(),
+        phoneNumber: z.string(),
+        name: z.string().describe("The name that RSVP users selects in the app, used inside the event card"),
     }),
 ]));

@@ -6,14 +6,14 @@ export declare const userEventInvitesSchema: z.ZodIntersection<z.ZodObject<{
     createdAt: z.ZodType<Timestamp, z.ZodTypeDef, Timestamp>;
     inviteCode: z.ZodOptional<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
-    createdAt: Timestamp;
-    status: "accepted" | "rejected" | "invited";
+    status: "accepted" | "invited" | "rejected";
     eventId: string;
+    createdAt: Timestamp;
     inviteCode?: string | undefined;
 }, {
-    createdAt: Timestamp;
-    status: "accepted" | "rejected" | "invited";
+    status: "accepted" | "invited" | "rejected";
     eventId: string;
+    createdAt: Timestamp;
     inviteCode?: string | undefined;
 }>, z.ZodDiscriminatedUnion<"inviteeType", [z.ZodObject<{
     uid: z.ZodString;
@@ -22,25 +22,28 @@ export declare const userEventInvitesSchema: z.ZodIntersection<z.ZodObject<{
     avatar: z.ZodOptional<z.ZodString>;
     inviteeType: z.ZodLiteral<"user">;
 }, "strip", z.ZodTypeAny, {
+    inviteeType: "user";
     uid: string;
     name: string;
-    inviteeType: "user";
     avatarURL?: string | undefined;
     avatar?: string | undefined;
 }, {
+    inviteeType: "user";
     uid: string;
     name: string;
-    inviteeType: "user";
     avatarURL?: string | undefined;
     avatar?: string | undefined;
 }>, z.ZodObject<{
     inviteeType: z.ZodLiteral<"rsvp">;
-    phoneNumber: z.ZodOptional<z.ZodString>;
+    phoneNumber: z.ZodString;
+    name: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     inviteeType: "rsvp";
-    phoneNumber?: string | undefined;
+    name: string;
+    phoneNumber: string;
 }, {
     inviteeType: "rsvp";
-    phoneNumber?: string | undefined;
+    name: string;
+    phoneNumber: string;
 }>]>>;
 export type UserInvitesType = z.infer<typeof userEventInvitesSchema>;
