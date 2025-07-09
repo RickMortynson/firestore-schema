@@ -17,7 +17,17 @@ export const userEventInvitesSchema = z.intersection(
     z.object({
       inviteeType: z.literal("rsvp"),
       phoneNumber: z.string(),
-      name: z.string().describe("The name that RSVP users selects in the app, used inside the event card"),
+      uid: z
+        .string()
+        .optional()
+        .describe(
+          "value is set after the use joins the event through the web app",
+        ),
+      name: z
+        .string()
+        .describe(
+          "The name that RSVP users selects in the app, used inside the event card",
+        ),
     }),
   ]),
 );

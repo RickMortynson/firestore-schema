@@ -36,14 +36,17 @@ export declare const userEventInvitesSchema: z.ZodIntersection<z.ZodObject<{
 }>, z.ZodObject<{
     inviteeType: z.ZodLiteral<"rsvp">;
     phoneNumber: z.ZodString;
+    uid: z.ZodOptional<z.ZodString>;
     name: z.ZodString;
 }, "strip", z.ZodTypeAny, {
     inviteeType: "rsvp";
     name: string;
     phoneNumber: string;
+    uid?: string | undefined;
 }, {
     inviteeType: "rsvp";
     name: string;
     phoneNumber: string;
+    uid?: string | undefined;
 }>]>>;
 export type UserInvitesType = z.infer<typeof userEventInvitesSchema>;
